@@ -12,13 +12,16 @@ class Game extends Component {
         let homeRecord = "(" + home.teamWinsLosses + ")";
         return `${awayCity} ${awayRecord} at ${homeCity} ${homeRecord}`;
     }
+
+    formatUrl = () => {
+        let gameID = this.props.games[0].gameID;
+        return `http://localhost:3004/games/${gameID}`;
+    }
     render() {
         // let awayTeam = this.props.games[0]
         return (
             <div>
-                <a href="http://google.com"><h3>{this.props.games.map((game) => (
-                    this.formatText(game)
-                ))}</h3></a>
+                <a href={this.formatUrl()}><h3>{this.formatText(this.props.games)}</h3></a>
             </div>
         )
     }
