@@ -27,7 +27,7 @@ contract("Initialization (Oracle)", (accounts) => {
         // ORLANDO won this game (accounts[4])
         // PHILLY lost this game (accounts[3])
 
-        let bet = [game_id, team_id, opponent_id, 0];
+        let bet = [game_id, team_id, opponent_id, 0,]; //timestamp needs to go here];
         let bet2 = [game_id2, team_id2, opponent_id2, 0];
 
         await instance.createBet(bet, {from: accounts[3], value: web3.utils.toWei("1", "ether")});

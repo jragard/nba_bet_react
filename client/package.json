@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "bootstrap": "^4.3.1",
+    "react": "^16.7.0-alpha.2",
+    "react-bootstrap": "^1.0.0-beta.12",
+    "react-date-picker": "^7.8.2",
+    "react-dom": "^16.7.0-alpha.2",
     "react-scripts": "2.1.1",
+    "swarm-js": "^0.1.39",
     "truffle-assertions": "^0.9.1",
-    "web3": "^1.0.0-beta.37"
+    "web3": "^1.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

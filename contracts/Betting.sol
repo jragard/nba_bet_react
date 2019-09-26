@@ -33,6 +33,11 @@ contract Betting is usingProvable {
         owner = msg.sender;
     }
 
+    function get_owner() public view returns (address) {
+        address _owner = owner;
+        return _owner;
+    }
+
     // Will pass in uint32[] with game_ID, team1_id, opponent_id, bet_amount
     function createBet(uint[4] calldata _bet) external payable {
         // add msg.value to end of bet array
@@ -184,7 +189,7 @@ contract Betting is usingProvable {
             current_query_address = _sender;
             uint big_game_ID = uint(_game_ID);
             string memory game_ID_str = uint2str(big_game_ID);
-            string memory _url_start = append("json(https://itchy-treefrog-14.localtunnel.me/completed/", game_ID_str);
+            string memory _url_start = append("json(https://bad-frog-13.localtunnel.me/completed/", game_ID_str);
             string memory _url_end = ").data.winning_ID";
             string memory url = append(_url_start, _url_end);
 
