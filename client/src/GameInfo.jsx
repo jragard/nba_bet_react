@@ -54,14 +54,14 @@ class GameInfo extends Component {
             <div id="teams">
                 <div id="away">
                     <h3 id="h3away">{`${this.get_away_and_home_teams()[0]} -- ${this.get_away_and_home_records()[0]}`}</h3>
-                    <img id="awayImg" src={process.env.PUBLIC_URL + this.get_logo_paths()[0]}></img>
+                    <img id="awayImg" src={process.env.PUBLIC_URL + "images/" + this.get_logo_paths()[0]}></img>
                 </div>
                 <div id="gameTime">
                     Time of Game (5:00 EST)
                 </div>
                 <div id="home">
                     <h3 id="h3home">{`${this.get_away_and_home_teams()[1]} -- ${this.get_away_and_home_records()[1]}`}</h3>
-                    <img id="homeImg" src={process.env.PUBLIC_URL + this.get_logo_paths()[1]}></img>
+                    <img id="homeImg" src={process.env.PUBLIC_URL + "images/" + this.get_logo_paths()[1]}></img>
                 </div>
             </div>
             <div id="bet">

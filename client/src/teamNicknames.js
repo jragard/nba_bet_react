@@ -13,7 +13,7 @@ export const nicknames = {
     "Houston": "Rockets",  
     "Indiana": "Pacers",  
     "LA": "Clippers",  
-    "LA": "Lakers",  
+    "Los Angeles": "Lakers",  
     "Memphis": "Grizzlies",  
     "Miami": " Heat",  
     "Milwaukee": "Bucks",  
