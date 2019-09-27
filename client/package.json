@@ -8,8 +8,11 @@
     "react-bootstrap": "^1.0.0-beta.12",
     "react-date-picker": "^7.8.2",
     "react-dom": "^16.7.0-alpha.2",
+    "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.0",
     "react-scripts": "2.1.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
     "swarm-js": "^0.1.39",
     "truffle-assertions": "^0.9.1",
     "web3": "^1.2.1"
@@ -28,5 +31,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "redux-devtools": "^3.5.0"
+  }
 }

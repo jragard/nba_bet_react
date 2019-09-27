@@ -1,54 +1,16 @@
 import React, { Component } from "react";
-import Betting from "./contracts/Betting.json";
 import Game from "./Game";
-import getWeb3 from "./utils/getWeb3";
 import DatePicker from "react-date-picker";
 import Button from "react-bootstrap/Button";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { allGames } from './actions/gamesAction.js';
 
 import "./EnterDate.css";
 
 class EnterDate extends Component {
-  state = { address: 0 };
-
-//   componentDidMount = async () => {
-//     try {
-//       // Get network provider and web3 instance.
-//       const web3 = await getWeb3();
-
-//       // Use web3 to get the user's accounts.
-//       const accounts = await web3.eth.getAccounts();
-
-//       // Get the contract instance.
-//       const networkId = await web3.eth.net.getId();
-
-//       const deployedNetwork = Betting.networks[networkId];
-
-//       const instance = new web3.eth.Contract(
-//         Betting.abi,
-//         deployedNetwork && deployedNetwork.address,
-//       );
-
-//       // Set web3, accounts, and contract to the state, and then proceed with an
-//       // example of interacting with the contract's methods.
-//       // this.setState({ web3, accounts, contract: instance }, this.runExample);
-//       this.setState({ web3, accounts, contract: instance }, this.runExample);
-
-//     } catch (error) {
-//       // Catch any errors for any of the above operations.
-//       alert(
-//         `Failed to load web3, accounts, or contract. Check console for details.`,
-//       );
-//       console.error(error);
-//     }
-//   };
-
-//   runExample = async () => {
-//     const { contract } = this.state;
-//     let address = await contract.methods.get_owner().call();
-//     this.setState({ address: address });
-//   };
+  state = { address: 0, allGames: null };
 
   onDatePick = (date) => {
     this.setState({ date });
@@ -86,57 +48,13 @@ class EnterDate extends Component {
       return res.json()
     })
     .then((res) => {
-      console.log(res.data);
-      console.log(typeof res.data);
-
       let gameData = [];
-      // let gameText = [];
-      // let gameData = [];
+
       for(let key in res.data) {
         let gamePair = res.data[key];
-        // console.log('gamePair');
-        // console.log(gamePair);
         let timestamp = new Date(gamePair[0].gameDateEST).getTime() / 1000;
-        // console.log('timestamp');
-        // console.log(timestamp);
         gamePair[0].timestamp = timestamp;
         gamePair[1].timestamp = timestamp;
-
-        // let gameID = gamePair[0].gameID;
-        // let homeTeamID = gamePair[0].homeTeamID;
-
-        // let city1 = gamePair[0].teamCityName;
-        // let teamID1 = gamePair[0].teamID;
-        // let record1 = gamePair[0].teamWinsLosses;
-
-        // let city2 = gamePair[1].teamCityName;
-        // let record2 = gamePair[1].teamWinsLosses;
-
-        // let homeTeam;
-        // let visitorTeam;
-        // let homeRecord;
-        // let visitorRecord;
-
-        // if(teamID1 === homeTeamID) {
-        //     homeTeam = city1;
-        //     visitorTeam = city2;
-        //     homeRecord = record1;
-        //     visitorRecord = record2;
-        //     gamePair[0].home = true;
-        //     gamePair[0].visiting = false;
-        //     gamePair[1].home = false;
-        //     gamePair[1].visiting = true;
-        // } else {
-        //     homeTeam = city2;
-        //     visitorTeam = city1;
-        //     homeRecord = record2;
-        //     visitorRecord = record1;
-        //     gamePair[1].home = true;
-        //     gamePair[1].visiting = false;
-        //     gamePair[0].home = false;
-        //     gamePair[0].visiting = true;
-        // }
-        console.log(gamePair);
 
         let homeObj = gamePair.filter((obj) => {
           return obj.homeTeamID === obj.teamID;
@@ -145,12 +63,11 @@ class EnterDate extends Component {
         let awayObj = gamePair.filter((obj) => {
           return obj.visitorTeamID === obj.teamID;
         });
-        console.log(homeObj);
-        console.log(awayObj);
 
         gameData.push([awayObj[0], homeObj[0]]);
     }
-    console.log(gameData);
+    
+    this.props.dispatch(allGames(gameData));
     this.setState({ games: gameData});
     })
 
@@ -174,8 +91,8 @@ class EnterDate extends Component {
         </div>
 
         <div>
-          {this.state.games ? this.state.games.map((game) => (
-            <Game games={game}/>
+          {this.state.games ? this.state.games.map((game, index) => (
+            <Game games={game} key={index} />
           )) : ""}
         </div>
 
@@ -185,4 +102,11 @@ class EnterDate extends Component {
   }
 }
 
-export default EnterDate;
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    allGames: state.allGames
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(EnterDate));

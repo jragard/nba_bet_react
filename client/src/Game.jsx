@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class Game extends Component {
 
     formatText = (game) => {
         let away = game[0];
         let home = game[1];
-        console.log(game[0])
         let awayCity = away.teamCityName;
         let homeCity = home.teamCityName;
         let awayRecord = "(" + away.teamWinsLosses + ")";
@@ -15,16 +17,23 @@ class Game extends Component {
 
     formatUrl = () => {
         let gameID = this.props.games[0].gameID;
-        return `http://localhost:3004/games/${gameID}`;
+        return `/games/${gameID}/`;
     }
+
     render() {
-        // let awayTeam = this.props.games[0]
         return (
             <div>
-                <a href={this.formatUrl()}><h3>{this.formatText(this.props.games)}</h3></a>
+                <Link to={this.formatUrl()}><h3>{this.formatText(this.props.games)}</h3></Link>
             </div>
+         
         )
     }
 }
 
-export default Game;
+const mapStateToProps = state => {
+    return {
+        allGames: state.allGames
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(Game));

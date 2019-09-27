@@ -1,0 +1,1 @@
+export const ALL_GAMES = 'ALL_GAMES';
