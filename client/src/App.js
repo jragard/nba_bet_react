@@ -76,7 +76,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    allGames: state.allGames
+    allGames: state.allGames,
+    gamesByMonth: state.gamesByMonth
   }
 }
 

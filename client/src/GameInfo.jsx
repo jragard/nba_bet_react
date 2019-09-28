@@ -5,11 +5,6 @@ import { nicknames, logos } from './teamNicknames.js';
 
 class GameInfo extends Component {
 
-    logGames = () => {
-        console.log(this.props.allGames);
-        console.log(this.props)
-    }
-
     get_this_game = () => {
         let this_game = this.props.allGames.filter((gamePair) => {
             return gamePair[0].gameID === this.props.match.params.gameID;
@@ -75,7 +70,8 @@ class GameInfo extends Component {
 
 const mapStateToProps = state => {
     return {
-        allGames: state.allGames
+        allGames: state.allGames,
+        gamesByMonth: state.gamesByMonth
     }
 }
 

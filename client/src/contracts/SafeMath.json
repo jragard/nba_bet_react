@@ -7269,7 +7269,7 @@
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-09-26T03:32:10.308Z",
+  "updatedAt": "2019-09-28T03:46:41.373Z",
   "devdoc": {
     "details": "Math operations with safety checks that throw on error",
     "methods": {},

@@ -3,10 +3,159 @@
     height: 75px;
 }
 
+#gamesContainer {
+    margin-top: 1%;
+    width: 97%;
+    height: 100%;
+    /* background-color: black; */
+    /* background: rgb(245, 243, 243); */
+    /* border: 1px solid lightgray; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#gameDate {
+    background-color: white;   
+}
+
+#grayStrip {
+    width: 100%;
+    background-color: rgb(245, 243, 243);
+    height: 25px;
+}
+
+
+
+#date {
+    height: 100%;
+    width: 25%;
+    /* background-color: rgb(245, 240, 241); */
+    /* background-color: black; */
+    /* position: relative;
+    top: 20px; */
+    /* background-color: green; */
+    display: flex;
+}
+
+#dateTextDiv {
+    position: relative;
+    top: 1.5%;
+    width: 87%
+    /* color: blue;
+    font-family: sans-serif;
+    font-weight: bolder; */
+}
+
+#dateText {
+    color: rgb(60, 60, 243);
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 14px;
+    width: 100%;
+}
+
+#games {
+    width: 100%;
+}
+
+#betOnGame {
+    width: 38%;
+    /* background-color: blue; */
+    height: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btn {
+    margin: 10px;
+    width: 132px;
+    background-color: white;
+    color: rgb(60, 60, 243);
+    border: 1px solid rgb(230, 228, 228);
+    border-radius: 2px;
+
+}
+
+#individualGame {
+    width: 100%;
+    height: 140px;
+    /* margin-bottom: 10px; */
+    /* background-color: white; */
+    /* background-color: yellow; */
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center;
+    justify-content: center; */
+}
+
+#tvP {
+    font-size: 12px;
+    /* background-color: purple; */
+    margin-top: -18px;
+}
+
+#tv {
+    /* background-color: pink; */
+    width: 88%;
+    height: 70px;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    top: 12px;
+    /* justify-content: start; */
+    
+   
+}
+
+#timeAndTv {
+    /* background-color: orange; */
+    width: 16%;
+}
+
+#teamsDiv {
+    /* background-color: yellow; */
+    height: 75%;
+    width: 16%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.teamsP {
+    margin: 0px;
+    font-size: 14px;
+    color: rgb(60, 60, 243);
+}
+
+#time {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#venue {
+    width: 30%;
+    height: 130px;
+    /* background-color: white; */
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 #teams {
     display: flex;
     padding: 30px;
-    background-color: lightgray;
+    background-color: rgb(255, 253, 253);
     border-radius: 8px;
     box-shadow: 5px;
 }
@@ -33,4 +182,110 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+
+#enterDate {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#root {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+
+
+
+
+#g1 {
+    width: 100%;
+    height: 140px;
+    /* background-color: white; */
+    /* background-color: red; */
+    margin-bottom: 30px;
+    display: flex;
+    
+}
+
+#g2 {
+    width: 100%;
+    height: 270px;
+    background-color: white;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+#g3 {
+    width: 100%;
+    height: 400px;
+    background-color: white;
+    margin-bottom: 30px;;
+    display: flex;
+}
+
+#g4 {
+    width: 100%;
+    height: 530x;
+    background-color: white;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+#g5 {
+    width: 100%;
+    height: 660px;
+    background-color: white;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+#g6 {
+    width: 100%;
+    height: 790px;
+    background-color: white;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+#g7 {
+    width: 100%;
+    height: 920px;
+    background-color: white;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+#g8 {
+    width: 100%;
+    height: 1050px;
+    background-color: white;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+#g9 {
+    width: 100%;
+    height: 1180px;
+    background-color: white;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+#g10 {
+    width: 100%;
+    height: 1310px;
+    background-color: white;
+    margin-bottom: 20px;
+    display: flex;
 }
