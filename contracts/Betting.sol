@@ -160,13 +160,13 @@ contract Betting is usingProvable {
         }
     }
 
-    function transfer_payout(uint payout, address payable winner) private {
+    function transfer_payout(uint payout, address payable winner) internal {
         winner.transfer(payout);
         // require(winner.transfer(payout), "transfer failed");
         emit LogPayout("A winner was just paid out!");
     }
 
-    function get_payout_amount(address payable winner) private {
+    function get_payout_amount(address payable winner) internal {
         address matched_bet_addr = matched_bet_addresses[winner];
         uint[] memory winner_bet = matching_bets[matched_bet_addr];
         uint[] memory matching_bet = address_to_bet[matched_bet_addr];
@@ -177,7 +177,7 @@ contract Betting is usingProvable {
         transfer_payout(payout, winner);
     }
 
-    function didWin(address payable sender) private view returns (bool) {
+    function didWin(address payable sender) internal view returns (bool) {
         address matched_bet_addr = matched_bet_addresses[sender];
         uint[] memory caller_bet = matching_bets[matched_bet_addr];
         string memory empty = "";
@@ -228,26 +228,30 @@ contract Betting is usingProvable {
         return result;
     }
 
-    function query_win() public {
-        uint[] memory bet = address_to_bet[msg.sender];
-        query(bet[0], msg.sender);
-    }
+    // function query_win() public {
+    //     uint[] memory bet = address_to_bet[msg.sender];
+    //     uint game_ID = bet[0];
+    //     // return game_ID;
+    //     query(game_ID, msg.sender);
+    // }
 
-    function query(uint _game_ID, address _sender) private {
-        if (provable_getPrice("URL") > address(this).balance) {
-          emit LogNewProvableQuery("Provable query was NOT sent, please add some ETH to cover for the query fee");
-        } else {
-            current_query_address = _sender;
-            uint big_game_ID = uint(_game_ID);
+    function query() public payable {
+        // if (provable_getPrice("URL") > address(this).balance) {
+        //   emit LogNewProvableQuery("Provable query was NOT sent, please add some ETH to cover for the query fee");
+        // } else {
+            current_query_address = msg.sender;
+            uint[] memory bet = address_to_bet[msg.sender];
+            uint big_game_ID = bet[0];
+            // uint big_game_ID = uint(_game_ID);
             string memory game_ID_str = uint2str(big_game_ID);
-            string memory _url_start = append("json(https://honest-dolphin-68.localtunnel.me/completed/", game_ID_str);
+            string memory _url_start = append("json(https://tiny-quail-39.localtunnel.me/completed/", game_ID_str);
             string memory _url_end = ").data.winning_ID";
             string memory url = append(_url_start, _url_end);
 
             bytes32 queryId = provable_query("URL", url);
             validIDs[queryId] = true;
             emit LogNewProvableQuery("Provable query was sent, standing by for the answer..");
-        }
+        // }
     }
 
 

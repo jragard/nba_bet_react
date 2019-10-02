@@ -55,8 +55,6 @@
 }
 
 #dateTextDiv {
-    position: relative;
-    top: 0.7%;
     width: 87%
 }
 
@@ -66,6 +64,8 @@
     font-weight: bolder;
     font-size: 14px;
     width: 100%;
+    position: relative;
+    top: 5px;
 }
 
 #games {

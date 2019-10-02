@@ -1,26 +1,27 @@
-import React, { Component } from "react";
 import Betting from "./contracts/Betting.json";
-import getWeb3 from "./utils/getWeb3";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Switch, Route } from 'react-router-dom';
-import HomePage from "./HomePage";
-import GameInfo from "./GameInfo";
-import UserBets from "./UserBets";
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { storeWeb3Action } from './actions/gamesAction.js';
 
-import "./App.css";
+import React, { Component } from "react";
+import { withRouter, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { storeWeb3Action } from './actions/actions.js';
+import getWeb3 from "./utils/getWeb3";
+
+import HomePage from "./components/HomePage";
+import PlaceBet from "./components/PlaceBet";
+import UserBets from "./components/UserBets";
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   state = { address: 0, web3: null, accounts: null, contract: null };
 
   componentDidMount = async () => {
-    // console.log(this.props.allGames)
     try {
       // Get network provider and web3 instance.
       const web3 = await getWeb3();
-      // console.log(web3);
+
       // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
 
@@ -34,33 +35,18 @@ class App extends Component {
         deployedNetwork && deployedNetwork.address,
       );
 
-      // Set web3, accounts, and contract to the state, and then proceed with an
-      // example of interacting with the contract's methods.
-      // this.setState({ web3, accounts, contract: instance }, this.runExample);
+      // Set web3, accounts, and contract to state
+      // this.setState({ web3, accounts, contract: instance });
       this.props.dispatch(storeWeb3Action({web3, accounts, contract: instance }));
       this.setState({ web3, accounts, contract: instance });
 
-      // if(this.props.allGames) {
-      //   console.log('setting state')
-      //   this.setState({ web3, accounts, contract: instance, allGames: this.props.allGames }, this.runExample);
-      // } else {
-      //   this.setState({ web3, accounts, contract: instance }, this.runExample);
-      // }
-
     } catch (error) {
-      // Catch any errors for any of the above operations.
       alert(
         `Failed to load web3, accounts, or contract. Check console for details.`,
       );
       console.error(error);
     }
   };
-
-  // runExample = async () => {
-  //   const { contract } = this.state;
-  //   let address = await contract.methods.get_owner().call();
-  //   this.setState({ address: address });
-  // };
 
   render() {
     if (!this.state.web3) {
@@ -72,7 +58,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/bets" component={UserBets}/>
-          <Route path="/games/:gameID" component={GameInfo} />
+          <Route path="/games/:gameID" component={PlaceBet} />
         </Switch>
       </React.Fragment>
     );

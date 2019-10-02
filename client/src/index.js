@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
-import { reducer } from "./reducer.js";
+import { reducer } from "./reducer/reducer.js";
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
