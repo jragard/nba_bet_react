@@ -1,0 +1,79 @@
+.g {
+    width: 100%;
+    display: flex;
+    background-color: white;
+}
+
+#g1 {
+    height: 165px;
+}
+
+#g2 {
+    height: 305px;
+}
+
+#g3 {
+    height: 445px;
+}
+
+#g4 {
+    height: 585x;
+}
+
+#g5 {
+    height: 725px;
+}
+
+#g6 {
+    height: 865px;
+}
+
+#g7 {
+    height: 1005px;
+}
+
+#g8 {
+    height: 1145px;
+}
+
+#g9 {
+    height: 1285px;
+}
+
+#g10 {
+    height: 1425px;
+}
+
+#g11 {
+    height: 1565px;
+}
+
+#date {
+    height: 100%;
+    width: 25%;
+    display: flex;
+}
+
+#dateTextDiv {
+    position: relative;
+    top: 0.7%;
+    width: 87%
+}
+
+#dateText {
+    color: rgb(60, 60, 243);
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 14px;
+    width: 100%;
+}
+
+#games {
+    width: 100%;
+}
+
+#grayStrip {
+    width: 100%;
+    background-color: rgb(214, 210, 210);
+    height: 25px;
+}

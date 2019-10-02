@@ -38,19 +38,70 @@ contract Betting is usingProvable {
         return _owner;
     }
 
+    function get_matched_bet_addresses(address _address) public view returns (address) {
+        address result = matched_bet_addresses[_address];
+        return result;
+    }
+
+    function get_address_to_bet(address _address) public view returns (uint[] memory) {
+        uint[] memory result;
+        uint length;
+        result = address_to_bet[_address];
+        length = result.length;
+        bool isEmpty = checkArray(result);
+        // if(length == 0) {
+        //     isEmpty = true;
+        // } else {
+        //     isEmpty = false;
+        // }
+        // bool isEmpty = checkArray(result);
+        // if(length != 0) {
+        //     return result;
+        // } else {
+        //     return dummy_result;
+        // }
+        return result;
+    }
+
+    function checkArray(uint[] memory _arr) public pure returns (bool){
+        uint length;
+        length = _arr.length;
+
+        if(length == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // Will pass in uint32[] with game_ID, team1_id, opponent_id, bet_amount
     function createBet(uint[4] calldata _bet) external payable {
+        uint[] memory current_address_to_bet = address_to_bet[msg.sender];
+        bool isEmpty = checkArray(current_address_to_bet);
+        require(isEmpty, "Bet already exists for this address");
+
         // add msg.value to end of bet array
         uint[4] memory bet = _bet;
         bet[3] = msg.value;
 
-
+        address zeros = 0x0000000000000000000000000000000000000000;
         // map address to bet array
         address_to_bet[msg.sender] = bet;
 
+        if(gameID_to_address[bet[0]] == zeros) {
+            gameID_to_address[bet[0]] = msg.sender;
+        } else {
+            matched_bet_addresses[gameID_to_address[bet[0]]] = msg.sender;
+            matched_bet_addresses[msg.sender] = gameID_to_address[bet[0]];
+            matching_bets[gameID_to_address[bet[0]]] = bet;
+            matching_bets[msg.sender] = address_to_bet[gameID_to_address[bet[0]]];
+            gameID_to_address[bet[0]] = zeros;
+        }
+        // address_to_bet[msg.sender] = bet;
+
         // zeros is expected result from mapping gameID_to_address[game_ID] if
         // there is nothing currently mapped to that game_ID
-        address zeros = 0x0000000000000000000000000000000000000000;
+        // address zeros = 0x0000000000000000000000000000000000000000;
         // if gameID_to_address[game_ID] is empty (no bets have been made for this gameID)
         // then we map the game_ID to the sender's address
 
@@ -90,15 +141,15 @@ contract Betting is usingProvable {
         // gameID known: true
         // winning_team_id known: true
 
-        if(gameID_to_address[bet[0]] == zeros) {
-            gameID_to_address[bet[0]] = msg.sender;
-        } else {
-            matched_bet_addresses[gameID_to_address[bet[0]]] = msg.sender;
-            matched_bet_addresses[msg.sender] = gameID_to_address[bet[0]];
-            matching_bets[gameID_to_address[bet[0]]] = bet;
-            matching_bets[msg.sender] = address_to_bet[gameID_to_address[bet[0]]];
-            gameID_to_address[bet[0]] = zeros;
-        }
+        // if(gameID_to_address[bet[0]] == zeros) {
+        //     gameID_to_address[bet[0]] = msg.sender;
+        // } else {
+        //     matched_bet_addresses[gameID_to_address[bet[0]]] = msg.sender;
+        //     matched_bet_addresses[msg.sender] = gameID_to_address[bet[0]];
+        //     matching_bets[gameID_to_address[bet[0]]] = bet;
+        //     matching_bets[msg.sender] = address_to_bet[gameID_to_address[bet[0]]];
+        //     gameID_to_address[bet[0]] = zeros;
+        // }
     }
 
    function claimWin() public {
@@ -177,7 +228,7 @@ contract Betting is usingProvable {
         return result;
     }
 
-    function query_win() external {
+    function query_win() public {
         uint[] memory bet = address_to_bet[msg.sender];
         query(bet[0], msg.sender);
     }
@@ -189,7 +240,7 @@ contract Betting is usingProvable {
             current_query_address = _sender;
             uint big_game_ID = uint(_game_ID);
             string memory game_ID_str = uint2str(big_game_ID);
-            string memory _url_start = append("json(https://bad-frog-13.localtunnel.me/completed/", game_ID_str);
+            string memory _url_start = append("json(https://honest-dolphin-68.localtunnel.me/completed/", game_ID_str);
             string memory _url_end = ").data.winning_ID";
             string memory url = append(_url_start, _url_end);
 

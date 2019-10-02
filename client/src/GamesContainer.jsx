@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import GameDate from "./GameDate";
-import './css/gameInfo.css';
+import './css/gamesContainer.css';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -9,20 +9,20 @@ class GamesContainer extends Component {
 
     format_date = (game_date) => {
         var options = { weekday: 'long', month: 'long', day: 'numeric' };
-        let date = new Date(game_date[0].gdte);
+        let date = new Date(game_date[0].etm);
         // let num_date = date.toLocaleDateString("en-US"); // 9/17/2016
         let long_date = date.toLocaleDateString("en-US", options); // Saturday, September 17, 2016
         return long_date
     }
 
     render() {
-        if(!this.props.allGamesFeed) {
+        if(!this.props.allGames) {
             return(<h2>Loading...</h2>)
         } else {
             return (
                 <React.Fragment>
                 <div id="gamesContainer">
-                    {this.props.allGamesFeed.map((game_date, index) => (
+                    {this.props.gamesByDate.map((game_date, index) => (
                         <GameDate games={game_date} idNum={game_date.length} date={this.format_date(game_date)} key={index}/>
                     ))}
                 </div>
@@ -35,8 +35,7 @@ class GamesContainer extends Component {
 const mapStateToProps = state => {
     return {
         allGames: state.allGames,
-        gamesByMonth: state.gamesByMonth,
-        allGamesFeed: state.allGamesFeed
+        gamesByDate: state.gamesByDate
     }
 }
 

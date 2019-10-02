@@ -1,22 +1,22 @@
-import { ALL_GAMES, GAMES_BY_MONTH, ALL_GAMES_FEED } from '../config.js';
+import { ALL_GAMES, GAMES_BY_DATE, STORE_WEB_3 } from '../config.js';
 
-export const allGames = (data) => {
+export const gamesByDateAction = (data) => {
+    return {
+        type: GAMES_BY_DATE,
+        payload: data
+    }
+}
+
+export const allGamesAction = (data) => {
     return {
         type: ALL_GAMES,
         payload: data
     }
 }
 
-export const gamesByMonthAction = (data) => {
+export const storeWeb3Action = (data) => {
     return {
-        type: GAMES_BY_MONTH,
-        payload: data
-    }
-}
-
-export const allGamesFeedAction = (data) => {
-    return {
-        type: ALL_GAMES_FEED,
+        type: STORE_WEB_3,
         payload: data
     }
 }

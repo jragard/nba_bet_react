@@ -1,31 +1,24 @@
 import React, { Component } from "react";
 import Game from "./Game";
-import './css/gameInfo.css';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import './css/gameDate.css';
 
 class GameDate extends Component {
 
     render() {
         return (
-            <div id={"g" + this.props.idNum.toString()}>
+            <div id={"g" + this.props.idNum.toString()} className="g">
 
                 <div id="date">
                     <div id="dateTextDiv">
                     <h6 id="dateText">{this.props.date}</h6>
                     </div>
-                    {/* <div>
-                        {this.props.games.map((game) => (
-                            <Game game={game}/>
-                        ))}
-                    </div> */}
                 </div>
                 <div id="games">
                     <div id="grayStrip">
 
                     </div>
-                        {this.props.games.map((game) => (
-                            <Game game={game}/>
+                        {this.props.games.map((game, index) => (
+                            <Game game={game} key={index}/>
                         ))}
                     </div>
             </div>
@@ -33,13 +26,4 @@ class GameDate extends Component {
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         allGames: state.allGames,
-//         gamesByMonth: state.gamesByMonth,
-//         allGamesFeed: state.allGamesFeed
-//     }
-// }
-
-// export default withRouter(connect(mapStateToProps)(GameDate));
 export default GameDate;

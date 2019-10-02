@@ -1,0 +1,10 @@
+#enterDate {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#submitBtn {
+    margin: 10px;
+  }
