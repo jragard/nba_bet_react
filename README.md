@@ -25,6 +25,17 @@ Search the VSCode extension marketplace for 'Solidity', and pick one.  I picked 
 
 -----
 
+#### Truffle Suite
+
+https://trufflesuite.com/docs/truffle/getting-started/installation
+
+<br>
+
+```
+npm install -g truffle
+```
+-----
+
 #### Ganache
 
 https://trufflesuite.com/docs/ganache/quickstart
@@ -79,14 +90,18 @@ npm install
 ```
 -----
 
+#### MetaMask Chrome Extension
 
+Google `metamask chrome extension` and download/set up the extension.  You will need to create a new wallet.  It's not too important to remember your seed phrase because we will be using test blockchain instances to develop.
 
-
+-----
 
 
 ## 2. Set up NBA Bet locally
 
-First, fork this repository.  Then clone to your local machine.
+There are two repositories you will need to fork/clone for development.  First, fork this repository (nba_bet_react).  Then clone to your local machine.  cd into 'client' and run `npm install`.
+
+Next, fork and clone https://github.com/jragard/nba_bet_server.  Run `npm install`.
 
 
 
