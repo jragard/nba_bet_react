@@ -30,6 +30,7 @@ contract Betting is usingProvable {
     constructor() public {
     //  provable_setProof(proofType_TLSNotary | proofStorage_IPFS);
         OAR = OracleAddrResolverI(0x6f485C8BF6fc43eA212E93BBF8ce046C7f1cb475);
+        // OAR = OracleAddrResolverI(0x0D41Ba7fDda7cB28FD321be40c2e4F5CCB70b0e4);
         owner = msg.sender;
     }
 
@@ -48,7 +49,7 @@ contract Betting is usingProvable {
         uint length;
         result = address_to_bet[_address];
         length = result.length;
-        bool isEmpty = checkArray(result);
+        // bool isEmpty = checkArray(result);
         // if(length == 0) {
         //     isEmpty = true;
         // } else {
@@ -244,7 +245,7 @@ contract Betting is usingProvable {
             uint big_game_ID = bet[0];
             // uint big_game_ID = uint(_game_ID);
             string memory game_ID_str = uint2str(big_game_ID);
-            string memory _url_start = append("json(https://tiny-quail-39.localtunnel.me/completed/", game_ID_str);
+            string memory _url_start = append("json(https://jolly-moose-35.localtunnel.me/completed/", game_ID_str);
             string memory _url_end = ").data.winning_ID";
             string memory url = append(_url_start, _url_end);
 

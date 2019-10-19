@@ -19,7 +19,7 @@ class UserBets extends Component {
             matchedBetAddresses: null,
             queryResult: null,
             querying: false,
-            winClaimed: false
+            winClaimed: false,
         }
     }
 
@@ -107,7 +107,7 @@ class UserBets extends Component {
         await contract.methods.query().send({from: accounts[0], value: web3.utils.toWei(".005", "ether")});
         setTimeout(() => {
             this.get_result()
-        }, 20000)
+        }, 30000)
         // contract.methods.query_win().call({from: accounts[0]})
         // .then((result) => {
         //     console.log(result);
@@ -115,6 +115,7 @@ class UserBets extends Component {
     }
 
     get_result = async () => {
+        console.log('getting result');
         let contract = this.props.contract;
         let accounts = this.props.accounts;
         let result = await contract.methods.get_result(accounts[0]).call();
@@ -191,7 +192,7 @@ class UserBets extends Component {
         return (
             <div>
                 {/* {this.state.userBets ? "yep we got userbets" : ""} */}
-                <Button variant="info" onClick={this.log_state}>Log State</Button>
+                {/* <Button variant="info" onClick={this.log_state}>Log State</Button> */}
                 <div id="teams">
                     <div id="away">
                         <p id="h3away">{`${this.state.teams[0]}`}</p>
@@ -221,25 +222,34 @@ class UserBets extends Component {
                     {this.state.userBets ? <p>{`Bet Amount: ${this.get_bet_amount()} ETH`}</p> : ""}
                 </div>
 
-                <div id="queryBtn">
-                    {this.state.queryResult ? "" : <Button variant="info" onClick={this.query_win}>Check Win</Button>}
+                <div >
+                    {this.state.queryResult ? "" : 
+                    <div id="queryBtn">
+                        <br></br>
+                        <br></br>
+                    <p>Did your team win?</p>
+                    <p>If so, click below to initiate a query.  Initiating a query costs a small amount of ETH, so don't make repeated unnecessary queries, and only query if you believe you won the bet</p>
+                    <Button variant="info" onClick={this.query_win}>Check Win</Button>
+                    <br></br>
+                    {this.state.querying ? <p id="queryP">Checking if you won the bet...please be patient, this may take up to 30 seconds...</p> : ""}
+
+                    </div>}
                 </div>
 
-                <div id="querying">
-                    {this.state.querying ? <p>Checking if you won the bet...please be patient, this may take up to 15 seconds...</p> : ""}
-                </div>
+                {/* <div id="querying">
+                    {this.state.querying ? <p id="queryP">Checking if you won the bet...please be patient, this may take up to 30 seconds...</p> : ""}
+                </div> */}
 
                 <div id="queryResult">
-                    {this.state.queryResult ? this.did_win_text() : ""}
+                    <h1 id="didWin">{this.state.queryResult && !this.state.winClaimed ? this.did_win_text() : ""}</h1>
                     {this.did_win() ? <Button
                                           variant="info"
                                           onClick={this.claim_win}
                                          >Claim Winnings</Button> 
                                         : ""}
-                </div>
-
-                <div id="congrats">
+                                    
                     {this.state.winClaimed ? <h1>Congratulations!</h1> : ""}
+                
                 </div>
 
                 {/* <div>

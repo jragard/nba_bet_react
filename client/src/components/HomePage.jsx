@@ -15,7 +15,6 @@ class HomePage extends Component {
   state = { allGames: null, gamesByDate: null };
 
   componentWillMount() {
-      // if(!)
       axios.get("http://localhost:3000/fullSchedule")
       .then((response) => {
         let monthSort = this.groupGamesByMonth(response.data.data.lscd);
@@ -156,8 +155,9 @@ class HomePage extends Component {
       return (
       <div id="enterDate">
         <Link to="/bets">See My Bets</Link>
-        <h1>Scroll or enter date for NBA games to bet on</h1>
-        <div>
+        <br></br>
+        <h1>Scroll for NBA games to bet on</h1>
+        {/* <div>
           <DatePicker 
             onChange={this.onDatePick}
             value={this.state.date}  
@@ -168,7 +168,7 @@ class HomePage extends Component {
             variant="info"
             onClick={this.submitDate}
             >Submit</Button>
-        </div>
+        </div> */}
 
         <GamesContainer />
       </div>

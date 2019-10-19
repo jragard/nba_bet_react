@@ -7264,12 +7264,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x16Ef481eBe0cb1F86abA04d2de0080fB9D6C1bC8",
-      "transactionHash": "0x52e2f54e4a8f72c3d67a8353cbc29384b1d8623333f57396ac33335fe4a17a5a"
+      "address": "0x71410e3c3c8BB571b0d56B1777CE7e074C3f4033",
+      "transactionHash": "0x8bb27d30e3792a2bcfccf9e300da502691ef459862d6e4e7de4f56c9cc0a1da4"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-02T23:05:40.774Z",
+  "updatedAt": "2019-10-19T19:44:26.375Z",
   "devdoc": {
     "details": "Math operations with safety checks that throw on error",
     "methods": {},
