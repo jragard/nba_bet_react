@@ -1,29 +1,24 @@
-import React, { Component } from "react";
-import Game from "./Game";
+import React from "react";
+import {Game} from "./Game";
 import '../css/gameDate.css';
 
-class GameDate extends Component {
+export const GameDate = ({idNum, date, games}) => {
+    return (
+        <div id={"g" + idNum.toString()} className="g">
 
-    render() {
-        return (
-            <div id={"g" + this.props.idNum.toString()} className="g">
-
-                <div id="date">
-                    <div id="dateTextDiv">
-                    <h6 id="dateText">{this.props.date}</h6>
-                    </div>
+            <div id="date">
+                <div id="dateTextDiv">
+                <h6 id="dateText">{date}</h6>
                 </div>
-                <div id="games">
-                    <div id="grayStrip">
-
-                    </div>
-                        {this.props.games.map((game, index) => (
-                            <Game game={game} key={index}/>
-                        ))}
-                    </div>
             </div>
-        );
-    }
-}
+            <div id="games">
+                <div id="grayStrip">
 
-export default GameDate;
+                </div>
+                    {games.map((game, index) => (
+                        <Game game={game} key={index}/>
+                    ))}
+                </div>
+        </div>
+    ); 
+}

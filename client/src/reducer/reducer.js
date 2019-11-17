@@ -1,9 +1,8 @@
-import { ALL_GAMES, GAMES_BY_DATE, STORE_WEB_3 } from './config.js';
+import { STORE_WEB_3, HYDRATE_GAMES } from './config.js';
 
 export const reducerState = {
     allGames: null,
-    // gamesByMonth: null,
-    // allGamesFeed: null,
+    gamesByMonth: null,
     gamesByDate: null,
     web3: null,
     accounts: null,
@@ -13,27 +12,17 @@ export const reducerState = {
 export const reducer = (state = reducerState, action) => {
     
     switch(action.type) {
-        case ALL_GAMES:
+        case HYDRATE_GAMES:
             return {...state,
-                    allGames: action.payload
+                    allGames: action.payload.allGames,
+                    gamesByDate: action.payload.gamesByDate,
+                    gamesByMonth: action.payload.monthSort
             }
         case STORE_WEB_3:
             return {...state,
                     web3: action.payload.web3,
                     accounts: action.payload.accounts,
                     contract: action.payload.contract
-            }
-        // case GAMES_BY_MONTH:
-        //     return {...state,
-        //             gamesByMonth: action.payload
-        //     }
-        // case ALL_GAMES_FEED:
-        //     return {...state,
-        //             allGamesFeed: action.payload
-        //     }
-        case GAMES_BY_DATE:
-            return {...state,
-                    gamesByDate: action.payload
             }
         default:
             return {...state};
