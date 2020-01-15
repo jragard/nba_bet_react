@@ -1,9 +1,18 @@
 # Guide To Contributing
+
+[1. Install Dependencies](#-1.-install-dependencies)<br>
+[2. Get Repositories](#-2.-fork-and-clone-repositories)<br>
+[3. Run Locally](#-3.-run-project-locally)
+
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
 
-#Install Dependencies
+# 1. Install Dependencies
 
 
 #### Solidity Compiler
@@ -97,6 +106,11 @@ npm install
 
 Google `metamask chrome extension` and download/set up the extension.  You will need to create a new wallet.  It's not too important to remember your seed phrase because we will be using test blockchain instances to develop.
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
 # 2. Fork And Clone Repositories
 
@@ -104,8 +118,14 @@ There are two repositories you will need to fork/clone for development.  First, 
 
 Next, fork and clone https://github.com/jragard/nba_bet_server.  Run `npm install`.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # 3. Run Project Locally
 
 #### Start local server in nba_bet_server directory
 
-`cd` into the nba_bet_server directory you previously forked and cloned.  If you have not yet successfully installed all the necessary dependencies, [follow this guide](#install-dependencies) If you have not yet successfully forked/cloned both the nba_bet_server and nba_bet_react repositories, [get them here](2.-fork-and-clone-repositories) 
+`cd` into the nba_bet_server directory you previously forked and cloned.  If you have not yet successfully installed all the necessary dependencies, [follow this guide](#-1.-install-dependencies) If you have not yet successfully forked/cloned both the nba_bet_server and nba_bet_react repositories, [get them here](#-2.-fork-and-clone-repositories).
