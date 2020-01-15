@@ -50,9 +50,13 @@ Linux - `Ganache-*.AppImage`
 
 -----
 
-#### Local Tunnel
+#### ngrok
 
-https://www.npmjs.com/package/localtunnel
+In order to expose our local NBA Bet server, we will download ngrok.  You'll need to sign up for an account, but it's free and you can easily sign up through Github or Google.
+
+https://dashboard.ngrok.com/signup
+
+Once you've created your account and signed in, follow the setup and installation instructions and peruse the docs if you would like.  The part that primarily concerns us under the "How Do I...?" section is first: "Expose a local web server".
 
 <br>
 
@@ -92,7 +96,7 @@ npm install
 
 #### MetaMask Chrome Extension
 
-Google `metamask chrome extension` and download/set up the extension.  You will need to create a new wallet.  It's not too important to remember your seed phrase because we will be using test blockchain instances to develop.
+Google `metamask chrome extension` and download/set up the extension.  You will need to create a new wallet.  For development purposes it's not critical to remember your wallet seed phrase, so you can skip that step if you like. We will be using test blockchain instances to develop our application, with testcoins in place of real ETH tokens.
 
 -----
 
