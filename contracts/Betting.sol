@@ -245,7 +245,7 @@ contract Betting is usingProvable {
             uint big_game_ID = bet[0];
             // uint big_game_ID = uint(_game_ID);
             string memory game_ID_str = uint2str(big_game_ID);
-            string memory _url_start = append("json(https://dangerous-chicken-36.localtunnel.me/completed/", game_ID_str);
+            string memory _url_start = append("json(http://7b169c87.ngrok.io/completed/", game_ID_str);
             string memory _url_end = ").data.winning_ID";
             string memory url = append(_url_start, _url_end);
 
