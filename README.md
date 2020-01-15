@@ -3,7 +3,7 @@
 <br>
 <br>
 
-# Install Dependencies
+#Install Dependencies
 
 
 #### Solidity Compiler
@@ -108,4 +108,4 @@ Next, fork and clone https://github.com/jragard/nba_bet_server.  Run `npm instal
 
 #### Start local server in nba_bet_server directory
 
-`cd` into the nba_bet_server directory you previously forked and cloned.  If you have not yet successfully installed all the necessary dependencies, [follow this guide](install-dependencies) If you have not yet successfully forked/cloned both the nba_bet_server and nba_bet_react repositories, [get them here](2.-fork-and-clone-repositories) 
+`cd` into the nba_bet_server directory you previously forked and cloned.  If you have not yet successfully installed all the necessary dependencies, [follow this guide](#install-dependencies) If you have not yet successfully forked/cloned both the nba_bet_server and nba_bet_react repositories, [get them here](2.-fork-and-clone-repositories) 
