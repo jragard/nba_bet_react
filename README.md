@@ -52,11 +52,11 @@ npm install -g truffle
 ```
 -----
 
+<br>
+
 #### Ganache
 
 https://trufflesuite.com/docs/ganache/quickstart
-
-<br>
 
 First, [Download](https://github.com/trufflesuite/ganache/releases/tag/v2.2.1-alpha.0) the appropriate version for your OS. Then, double click on the downloaded file and follow the prompts.
 
@@ -66,6 +66,8 @@ Linux - `Ganache-*.AppImage`
 
 -----
 
+<br>
+
 #### ngrok
 
 In order to expose our local NBA Bet server, we will download ngrok.  You'll need to sign up for an account, but it's free and you can easily sign up through Github or Google.
@@ -74,12 +76,9 @@ https://dashboard.ngrok.com/signup
 
 Once you've created your account and signed in, follow the setup and installation instructions and peruse the docs if you would like.  The part that primarily concerns us under the "How Do I...?" section is first: "Expose a local web server".
 
-<br>
-
-```
-npm install -g localtunnel
-```
 -----
+
+<br>
 
 #### Ethereum Bridge
 
@@ -110,9 +109,13 @@ npm install
 ```
 -----
 
+<br>
+
 #### MetaMask Chrome Extension
 
 Google `metamask chrome extension` and download/set up the extension.  You will need to create a new wallet.  For development purposes it's not critical to remember your wallet seed phrase, so you can skip that step if you like. We will be using test blockchain instances to develop our application, with testcoins in place of real ETH tokens.
+
+-----
 
 <br>
 <br>
@@ -122,9 +125,12 @@ Google `metamask chrome extension` and download/set up the extension.  You will 
 
 # 2. Fork And Clone Repositories
 
-There are two repositories you will need to fork/clone for development.  First, fork this repository (nba_bet_react).  Then clone to your local machine.  cd into 'client' and run `npm install`.
+There are two repositories you will need to fork/clone for development.  First, fork this repository (nba_bet_react).  Then clone to your local machine.  `cd` into nba_bet_react/client and run `npm install`.
 
-Next, fork and clone https://github.com/jragard/nba_bet_server.  Run `npm install`.
+Next, fork and clone https://github.com/jragard/nba_bet_server
+`cd` into the nba_bet_server directory and run `npm install`.
+
+-----
 
 <br>
 <br>
