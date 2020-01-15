@@ -30,12 +30,16 @@ npm install -g solc
 ```
 -----
 
+<br>
+
 #### Solidity VSCode Extension
 
 
 Search the VSCode extension marketplace for 'Solidity', and pick one.  I picked the top result with 785k downloads.
 
 -----
+
+<br>
 
 #### Truffle Suite
 
