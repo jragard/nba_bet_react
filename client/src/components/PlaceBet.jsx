@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import { logos } from '../utils/logos.js';
 import "../css/gameInfo.css";
 import { useRouter } from "../utils/router";
 import { format_date } from "../utils/formatDate";
-import { months } from "../utils/months";
 
-export const PlaceBet = ({web3, accounts, contract}) => {
-    const gamesByMonth = useSelector(state => state.gamesByMonth);
+export const PlaceBet = ({web3, accounts, contract, allGames}) => {
     const { match } = useRouter();
 
     const [state, setState] = useState({
@@ -29,8 +26,9 @@ export const PlaceBet = ({web3, accounts, contract}) => {
     });
 
     const get_this_game = async () => {
-        const thisGame = await gamesByMonth[months[match.params.gameDate.slice(5, 7)]][match.params.gameDate].filter((game) => {
-            return game.gid === match.params.gameID;
+        const gameID = match.params.gameID;;
+        const thisGame = allGames.filter((game) => {
+            return game.gid === gameID;
         });
         return thisGame[0];
     }

@@ -10,6 +10,7 @@ export const storeWeb3 = (data) => {
 export const hydrateGames = (data) => {
     return {
         type: HYDRATE_GAMES,
-        payload: data
+        gamesByDate: data.gamesByDate,
+        allGames: data.allGames,
     }
 }

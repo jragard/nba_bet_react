@@ -2,7 +2,6 @@ import { STORE_WEB_3, HYDRATE_GAMES } from './config.js';
 
 export const reducerState = {
     allGames: null,
-    gamesByMonth: null,
     gamesByDate: null,
     web3: null,
     accounts: null,
@@ -14,9 +13,8 @@ export const reducer = (state = reducerState, action) => {
     switch(action.type) {
         case HYDRATE_GAMES:
             return {...state,
-                    allGames: action.payload.allGames,
-                    gamesByDate: action.payload.gamesByDate,
-                    gamesByMonth: action.payload.monthSort
+                    gamesByDate: action.gamesByDate,
+                    allGames: action.allGames,
             }
         case STORE_WEB_3:
             return {...state,

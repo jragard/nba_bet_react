@@ -4,7 +4,6 @@ import {GameDate} from "./GameDate";
 import { format_date } from "../utils/formatDate";
 
 export const GamesContainer = ({gamesByDate}) => {
-
     return (
         <>
         {gamesByDate ? (
@@ -19,3 +18,4 @@ export const GamesContainer = ({gamesByDate}) => {
         </>
     )
 }
+
