@@ -16,18 +16,21 @@ const App = () => {
   const dispatch = useDispatch();
   const gamesByDate = useSelector(state => state.gamesByDate);
   const allGames = useSelector(state => state.allGames);
+  const web3Instance = useSelector(state => state.web3);
+  const accounts = useSelector(state => state.accounts);
+  const contract = useSelector(state => state.contract);
 
-  const [state, setState] = useState({ address: 0, web3: null, accounts: null, contract: null, allGames: [] });
-
+  const [appState, setAppState] = useState({ address: 0, web3: null, accounts: null, contract: null, allGames: [] });
   const getGames = () => {
     axios.get("http://localhost:3000/fullSchedule")
     .then((response) => {
       dispatch(hydrateGames(response.data));
-      setState({allGames: response.data.allGames})
+      setAppState({allGames: response.data.allGames})
     });
   }
 
   const connectWeb3 = async () => {
+    console.log('connectWeb3 running')
     try {
       // Get network provider and web3 instance.
       const web3 = await getWeb3();
@@ -51,7 +54,7 @@ const App = () => {
       // Set web3, accounts, and contract to state, and dispatch the same state object to redux store
       console.log('{web3, accounts, contract: instance }: ', {web3, accounts, contract: instance });
       dispatch(storeWeb3({web3, accounts, contract: instance }));
-      setState({ web3, accounts, contract: instance });
+      setAppState({ ...appState, web3, accounts, contract: instance });
 
     } catch (error) {
       alert(
@@ -71,7 +74,7 @@ const App = () => {
 
   return (
     <>
-      {gamesByDate && allGames ? (
+      {gamesByDate && allGames && web3Instance ? (
             <Switch>
               <Route exact path="/" 
                      render={(props) => <HomePage {...props} gamesByDate={gamesByDate} />}
@@ -80,15 +83,15 @@ const App = () => {
                      component={UserBets}
               />
               <Route path="/games/:gameID/:gameDate" 
-                     render={(props) => <PlaceBet {...props} web3={state.web3} accounts={state.accounts} contract={state.contract} allGames={state.allGames} />}
+                     render={(props) => <PlaceBet {...props} web3={web3Instance} accounts={accounts} contract={contract} allGames={appState.allGames} />}
               />
             </Switch>
             
       ) : <div><div>Loading Web3, accounts, and contract...</div><button onClick={() => {
-          console.log('state: ', state);
+          console.log('state: ', appState);
           console.log(allGames);
           console.log(gamesByDate);
-          console.log(state.web3);
+          console.log(appState.web3);
       }}>log</button></div>}
     </>
   );

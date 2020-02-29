@@ -88,13 +88,15 @@ export const PlaceBet = ({web3, accounts, contract, allGames}) => {
     }
 
     const send = async () => {
-        const receipt = await send_bet();
-        if(receipt.status) {
-            setState({
-                ...state,
-                receipt,
-                displayFinalConfirm: false
-            });
+        if(web3) {
+            const receipt = await send_bet();
+            if(receipt.status) {
+                setState({
+                    ...state,
+                    receipt,
+                    displayFinalConfirm: false
+                });
+            }
         }
     }
 

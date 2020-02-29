@@ -25,7 +25,9 @@ export const UserBets = () => {
     });
 
     const get_user_bets = async () => {
+        console.log('getuserbets running');
         let betGameID = await contract.methods.address_to_bet(accounts[0], 0).call();
+        console.log('betGameID: ', betGameID);
         if(betGameID && betGameID.length < 10) {
             const zeros_to_add = 10 - betGameID.length;
             for(let i = 0; i < zeros_to_add; i++) {
@@ -36,9 +38,15 @@ export const UserBets = () => {
         const betOpponentID = await contract.methods.address_to_bet(accounts[0], 2).call();
         const betAmount = await contract.methods.address_to_bet(accounts[0], 3).call();
 
+        console.log('betTeamID: ', betTeamID);
+        console.log('betOpponentID: ', betOpponentID);
+        console.log('betAmount: ', betAmount);
+
         const game = allGames.filter((game) => {
             return game.gid === betGameID
         });
+
+        console.log('game: ', game);
 
         if(game[0]) {
             setState({
@@ -51,9 +59,11 @@ export const UserBets = () => {
     }
 
     const get_matched_bet_addresses = async () => {
+        console.log('getMatchedBetAddresses running');
         const zeros = "0x0000000000000000000000000000000000000000";
         const addr = await contract.methods.get_matched_bet_addresses(accounts[0]).call();
 
+        console.log('addr: ', addr);
         if(addr !== zeros) {
             setState({
                 ...state,
@@ -148,8 +158,13 @@ export const UserBets = () => {
 
     useEffect(() => {
         get_user_bets();
-        get_matched_bet_addresses();
+        // get_matched_bet_addresses();
     }, []);
+
+    useEffect(() => {
+        // get_user_bets();
+        get_matched_bet_addresses();
+    }, [state.userBets]);
 
     if(!state.userBets) {
         return (<p>loading...</p>)
