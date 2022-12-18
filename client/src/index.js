@@ -9,10 +9,28 @@ import { reducer } from "./reducer/reducer.js";
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
+
+// import {
+//     createBrowserRouter,
+//     createRoutesFromElements,
+//     Route,
+//     RouterProvider,
+//     Routes
+//   } from "react-router-dom";
+
+
 const store = createStore(reducer,
     compose(applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 );
+
+// const router = createBrowserRouter(
+//     createRoutesFromElements(
+//     <Provider store={store}>
+//         <App />
+//     </Provider>
+//     )
+//   );
 
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // const store = createStore( reducer, composeEnhancers( applyMiddleware( thunk ) ) );
@@ -23,6 +41,13 @@ ReactDOM.render(
         <App />
     </Provider>
 </BrowserRouter>, document.getElementById('root'));
+
+
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//     <React.StrictMode>
+//         <RouterProvider router={router} />
+//     </React.StrictMode>
+// )
 
 serviceWorker.register();
 

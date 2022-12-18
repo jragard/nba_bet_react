@@ -25,7 +25,10 @@ export const UserBets = () => {
     });
 
     const get_user_bets = async () => {
+        console.log('get user bets running');
+        // index.js:303 Uncaught (in promise) Error: Returned values aren't valid, did it run Out of Gas? You might also see this error if you are not using the correct ABI for the contract you are retrieving data from, requesting data from a block number that does not exist, or querying a node which is not fully synced.
         let betGameID = await contract.methods.address_to_bet(accounts[0], 0).call();
+        console.log('betGameID: ', betGameID);
         if(betGameID && betGameID.length < 10) {
             const zeros_to_add = 10 - betGameID.length;
             for(let i = 0; i < zeros_to_add; i++) {

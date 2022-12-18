@@ -4,6 +4,15 @@ import { Link } from 'react-router-dom';
 import "../css/game.css";
 
 export const Game = ({game}) => {
+    // console.log('game: ', game);
+    const visiting = game.v;
+    const home = game.h;
+
+    const visitingAbbr = visiting.ta;
+    const homeAbbr = home.ta;
+
+    const previewUrl = `https://www.nba.com/game/${visitingAbbr}-vs-${homeAbbr}-${game.gid}`
+
     return (
         <div id="individualGame">
             <div id="timeAndTv">
@@ -41,7 +50,7 @@ export const Game = ({game}) => {
         
                     </Link>
                     
-                    <a href={"https://www.nba.com/games/" + game.gcode + "/#/"}>
+                    <a href={previewUrl}>
                     <Button
                         // variant="info"
                         id="btn2"

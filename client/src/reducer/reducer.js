@@ -16,7 +16,7 @@ export const reducer = (state = reducerState, action) => {
             return {...state,
                     allGames: action.payload.allGames,
                     gamesByDate: action.payload.gamesByDate,
-                    gamesByMonth: action.payload.monthSort
+                    gamesByMonth: action.payload.gamesByMonth
             }
         case STORE_WEB_3:
             return {...state,

@@ -1,7 +1,7 @@
 import Betting from "./contracts/Betting.json";
 
 import React, { useState, useEffect } from "react";
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route, createRoutesFromElements } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { storeWeb3, hydrateGames } from './actions/actions.js';
 
@@ -21,6 +21,7 @@ const App = () => {
   const getGames = () => {
     axios.get("http://localhost:3000/fullSchedule")
     .then((response) => {
+      console.log('response: ', response);
       dispatch(hydrateGames(response.data));
       setGamesByDate(response.data.gamesByDate);
     });
@@ -61,20 +62,16 @@ const App = () => {
     connect();
   }, []);
 
-  return (
+  return ( 
     <>
       {state.web3 && gamesByDate ? (
-            <Switch>
-              <Route exact path="/" 
-                     render={(props) => <HomePage {...props} gamesByDate={gamesByDate} />}
+            <Routes>
+              <Route path="/" element={<HomePage gamesByDate={gamesByDate} />} />
+              <Route path="/bets" element={<UserBets />} />
+              <Route path="/games/:gameID/:gameDate" element={<PlaceBet web3={state.web3} accounts={state.accounts} contract={state.contract} />}
+                    //  render={(props) => <PlaceBet {...props} web3={state.web3} accounts={state.accounts} contract={state.contract} />}
               />
-              <Route path="/bets" 
-                     component={UserBets}
-              />
-              <Route path="/games/:gameID/:gameDate" 
-                     render={(props) => <PlaceBet {...props} web3={state.web3} accounts={state.accounts} contract={state.contract} />}
-              />
-            </Switch>
+            </Routes>
       ) : <div>Loading Web3, accounts, and contract...</div>}
     </>
   );
